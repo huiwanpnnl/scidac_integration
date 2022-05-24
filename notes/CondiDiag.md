@@ -11,6 +11,11 @@
 `huiwanpnnl/atm/CondiDiag1.0_in_v2`
 (branched off from master at hash `4b21b5` from May 19, 2022)
 
+
+## Work environment
+
+All simulations mentioned below were performed on Compy.
+
 ## Implementation
 
 Started from `CondiDiag1.0_in_EAMv1.tar.gz` shared on [Zenodo](https://zenodo.org/record/6325126).
@@ -172,3 +177,5 @@ The following files were compared using `cdo diffv` and were found to have the s
 ## Testing the functionality
 
 Four 1-month simulations were performed. The first 3 were the use cases shown in [the GMD paper](https://gmd.copernicus.org/articles/15/3205/2022/gmd-15-3205-2022.html). The last one was a CAPE budget analysis. Note that simulations in the GMD paper were performed with EAMv1 and for October, while the test simulations here were use EAMv2 and for January, so the plotted results showed some differences in the details although the key features were the same.
+
+The run scripts (`.sh` files), postprocessing scripts (`.ncl` files), and plots (PDF files) can be found in [a GitHub repo](https://github.com/huiwanpnnl/scidac_integration/tree/main/scripts/CondiDiag).
