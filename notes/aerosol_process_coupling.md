@@ -65,4 +65,28 @@ Short 2x5-day simulation with a restart after day 5
   
 ` nstep, te      481   0.26203722892147989E+10   0.26203737999446177E+10   0.83546702557270257E-04   0.98520825327654529E+05`
 
-## Climate simulations
+## Five-year atmosphere simulation
+
+### Case setup
+
+* Compset: `F2010`
+* Resolution: `ne30pg2_EC30to60E2r2`
+* `CASE_GROUP`: `v2.LR.SciDAC4-PNNL`
+* Hybrid run with an AMIP reference case:
+
+```
+readonly MODEL_START_TYPE="hybrid"  
+readonly START_DATE="0001-01-01"
+
+readonly GET_REFCASE=TRUE
+readonly RUN_REFDIR="/compyfs/linw288/E3SMv2/v2.LR.amip_0101/rest/2010-01-01-00000"
+readonly RUN_REFCASE="v2.LR.amip_0101"
+readonly RUN_REFDATE="2010-01-01"
+```
+ * PE layout: 640 tasks (640/40 = 16 nodes)
+
+### Paths
+
+* Case name: `baseline_4b21b5_F2010`
+* Run script: [`run_baseline_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/baseline/run_baseline_F2010_climate.sh)
+* Run dir: `/compyfs/wanh895/scidac4_int/master/baseline_4b21b5_F2010/run/`
