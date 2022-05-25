@@ -54,11 +54,15 @@ Short 2x5-day simulation with a restart after day 5
 `phys_ctl_readnl: cflx_cpl_opt =            1`
 
 * The following line in `atm.log` indicates that the results are BFB identical to those from the master:
+
 `nstep, te      481   0.26201811523625607E+10   0.26201826682369900E+10   0.83831016650550192E-04   0.98521053591103759E+05`
 
-* For reference, the corresponding line from the baseline (hash `4b21b5` from May 19, 2022) is `nstep, te      481   0.26201811523625607E+10   0.26201826682369900E+10   0.83831016650550192E-04   0.98521053591103759E+05`
+* For reference, the corresponding line from the baseline (hash `4b21b5` from May 19, 2022) is 
+
+`nstep, te      481   0.26201811523625607E+10   0.26201826682369900E+10   0.83831016650550192E-04   0.98521053591103759E+05`
 
 * For comparison, if `cflx_cpl_opt = 2`, this line becomes 
-  ` nstep, te      481   0.26203722892147989E+10   0.26203737999446177E+10   0.83546702557270257E-04   0.98520825327654529E+05`
+  
+` nstep, te      481   0.26203722892147989E+10   0.26203737999446177E+10   0.83546702557270257E-04   0.98520825327654529E+05`
 
 ## Climate simulations
