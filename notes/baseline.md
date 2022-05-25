@@ -7,7 +7,7 @@ Starting point is hash `4b21b5` from May 19, 2022.
 ```
 ssh wan895@compy
 cd codes/scidac4_int
-git clone --recursive https://github.com/E3SM-Project/E3SM.git master
+git clone --recursive git@github.com:E3SM-Project/E3SM.git master
 ```
 
 ## Test run 1: XS 2x5 days
