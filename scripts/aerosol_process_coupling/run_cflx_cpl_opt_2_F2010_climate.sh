@@ -39,7 +39,7 @@ readonly DEBUG_COMPILE=false
 
 # Run options
 readonly MODEL_START_TYPE="hybrid"  # 'initial', 'continue', 'branch', 'hybrid'
-readonly START_DATE="0001-01-01"
+readonly START_DATE="2010-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 readonly GET_REFCASE=TRUE
@@ -88,12 +88,12 @@ else
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
   readonly PELAYOUT="L"
   readonly NTASKS="640"
-  readonly WALLTIME="24:00:00"
-  readonly STOP_OPTION="nyears"
-  readonly STOP_N="5"
-  readonly REST_OPTION="nyears"
-  readonly REST_N="1"
-  readonly RESUBMIT="0"
+  readonly WALLTIME="1:59:00"
+  readonly STOP_OPTION="nmonths"
+  readonly STOP_N="4"
+  readonly REST_OPTION="nmonths"
+  readonly REST_N="4"
+  readonly RESUBMIT="14"
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
@@ -108,7 +108,7 @@ readonly OLD_EXECUTABLE=""
 do_fetch_code=false
 do_create_newcase=true
 do_case_setup=true
-do_case_build=true
+do_case_build=false
 do_case_submit=true
 
 # --- Now, do the work ---
@@ -167,10 +167,6 @@ cat << EOF >> user_nl_eam
  fincl5 = 'PRECT','PRECC','TUQ','TVQ','QFLX','SHFLX','U90M','V90M'
  fincl6 = 'CLDTOT_ISCCP','MEANCLDALB_ISCCP','MEANTAU_ISCCP','MEANPTOP_ISCCP','MEANTB_ISCCP','CLDTOT_CAL','CLDTOT_CAL_LIQ','CLDTOT_CAL_ICE','CLDTOT_CAL_UN','CLDHGH_CAL','CLDHGH_CAL_LIQ','CLDHGH_CAL_ICE','CLDHGH_CAL_UN','CLDMED_CAL','CLDMED_CAL_LIQ','CLDMED_CAL_ICE','CLDMED_CAL_UN','CLDLOW_CAL','CLDLOW_CAL_LIQ','CLDLOW_CAL_ICE','CLDLOW_CAL_UN'
  fincl7 = 'O3', 'PS', 'TROP_P'
-
-! Additional retuning
- clubb_tk1 = 268.15D0
- gw_convect_hcf = 10.0
 EOF
 
 cat << EOF >> user_nl_elm
@@ -461,6 +457,8 @@ case_submit() {
 
     echo $'\n----- Starting case_submit -----\n'
     pushd ${CASE_SCRIPTS_DIR}
+
+    ./xmlchange JOB_QUEUE=short --force
 
     # Run CIME case.submit
     ./case.submit
