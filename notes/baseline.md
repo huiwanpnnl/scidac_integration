@@ -10,7 +10,7 @@ cd codes/scidac4_int
 git clone --recursive git@github.com:E3SM-Project/E3SM.git master
 ```
 
-## Test run 1: XS 2x5 days
+## Test run: XS 2x5 days
 
 * Minimal changes made to run_e3sm.template.sh:
   - Set proper machine and project names, paths;
@@ -22,7 +22,7 @@ git clone --recursive git@github.com:E3SM-Project/E3SM.git master
   - SYPD reported in `atm.log`: 2.05655157554886
 
 
-## Test run 2: 5-year atmosphere simulation
+## Test run: 5-year atmosphere simulation
 
 ### Case setup
 
@@ -44,6 +44,7 @@ readonly RUN_REFDATE="2010-01-01"
 
 ### Paths
 
-* Case name: `aerosol_F2010`
-* Run script: [`run_cflx_cpl_opt_2_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/aerosol_process_coupling/run_cflx_cpl_opt_2_F2010_climate.sh)
-* Run dir: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/run/`
+* Case name: `baseline_4b21b5_F2010`
+* Run script: [`run_baseline_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/baseline/run_baseline_F2010_climate.sh)
+* Run dir: `/compyfs/wanh895/scidac4_int/master/baseline_4b21b5_F2010/run/`
+* Climo files: `/compyfs/wanh895/scidac4_int/master/baseline_4b21b5_F2010/climo/`
