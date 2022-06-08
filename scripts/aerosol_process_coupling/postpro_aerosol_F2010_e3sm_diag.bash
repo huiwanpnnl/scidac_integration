@@ -20,7 +20,7 @@ source /share/apps/E3SM/conda_envs/load_latest_e3sm_unified_compy.sh
 # Cases and paths 
 
 readonly CASE_GROUP="v2.LR.SciDAC4-PNNL"
-readonly www="/compyfs/www/${USER}/${CASE_GROUP}"
+readonly www="/compyfs/www/${USER}/E3SM/${CASE_GROUP}"
 
 readonly CASE_CTRL="baseline_4b21b5_F2010"
 readonly CASE_TEST="aerosol_F2010"
