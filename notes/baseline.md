@@ -14,7 +14,7 @@ git clone --recursive git@github.com:E3SM-Project/E3SM.git master
 
 * Minimal changes made to run_e3sm.template.sh:
   - Set proper machine and project names, paths;
-  - Use F case and resolution as noted above;
+  - Use compset `F2010` and resolution `ne30pg2_oECv3`;
   - Initial run;
   - Case name: `baseline_short`
 * Output under `/compyfs/wanh895/scidac4_int/master/baseline_short/tests/XS_2x5_ndays/run`
@@ -24,3 +24,26 @@ git clone --recursive git@github.com:E3SM-Project/E3SM.git master
 
 ## Test run 2: 5-year atmosphere simulation
 
+### Case setup
+
+* Compset: `F2010`
+* Resolution: `ne30pg2_EC30to60E2r2`
+* `CASE_GROUP`: `v2.LR.SciDAC4-PNNL`
+* Hybrid run with an AMIP reference case:
+
+```
+readonly MODEL_START_TYPE="hybrid"  
+readonly START_DATE="0001-01-01"
+
+readonly GET_REFCASE=TRUE
+readonly RUN_REFDIR="/compyfs/linw288/E3SMv2/v2.LR.amip_0101/rest/2010-01-01-00000"
+readonly RUN_REFCASE="v2.LR.amip_0101"
+readonly RUN_REFDATE="2010-01-01"
+```
+ * PE layout: 640 tasks (640/40 = 16 nodes)
+
+### Paths
+
+* Case name: `aerosol_F2010`
+* Run script: [`run_cflx_cpl_opt_2_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/aerosol_process_coupling/run_cflx_cpl_opt_2_F2010_climate.sh)
+* Run dir: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/run/`
