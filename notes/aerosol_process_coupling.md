@@ -2,7 +2,7 @@
 
 ## Motivation
 
-In EAMv1 and v2, the surface emission of aerosols and gas species is applied (i.e., the tracer mixing ratios in the state variable are updated) inside the subroutine `clubb_surface` in `tphysac`, which is called before dry removal, while resolved transport and turbulent mixing are calculated afterwards. This sequence of calculation, used in combination with sequential operator splitting, is problematic for aerosol species with strong surface emission sources, as this numerical scheme leads to 
+In EAMv1 and v2, the surface emission of aerosols and gas species is applied (i.e., the tracer mixing ratios in the state variable are updated) after the subroutine `clubb_surface` in `tphysac`. This is done before dry removal. The resolved transport and turbulent mixing are calculated after dry removal. This sequence of calculation, used in combination with sequential operator splitting, is problematic for aerosol species with strong surface emission sources as this numerical scheme leads to 
 
 * overestimated dry removal
 * underestimated turbulent transport
@@ -10,7 +10,7 @@ In EAMv1 and v2, the surface emission of aerosols and gas species is applied (i.
 and consequently
 
 * underestimated long-range transport
-* overly shortly aerosol lifetime
+* overly short aerosol lifetime
 
 The problem is particularly severe when the bottom layer in EAM is thin.
 
