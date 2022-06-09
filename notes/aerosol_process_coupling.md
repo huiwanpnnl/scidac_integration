@@ -72,7 +72,7 @@ Short 2x5-day simulation with a restart after day 5
 * Compset: `F2010`
 * Resolution: `ne30pg2_EC30to60E2r2`
 * `CASE_GROUP = v2.LR.SciDAC4-PNNL`
-* Hybrid run with an AMIP reference case:
+* Hybrid run with an AMIP reference case provided by Wuyin Lin:
 
 ```
 readonly MODEL_START_TYPE="hybrid"  
@@ -89,9 +89,13 @@ readonly RUN_REFDATE="2010-01-01"
 ### Paths
 
 
-
 * Case name: `aerosol_F2010`
 * Run script: [`run_cflx_cpl_opt_2_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/aerosol_process_coupling/run_cflx_cpl_opt_2_F2010_climate.sh)
 * Run dir: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/run/`
 * Climo files: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/climo/`
 * E3SM_Diags output: [comparison with baseline](https://compy-dtn.pnl.gov/wanh895/E3SM/v2.LR.SciDAC4-PNNL/aerosol_vs_baseline_4b21b5_F2010/e3sm_diags/180x360_aave/aerosol_vs_baseline_4b21b5_F2010_2010-2014/viewer/)
+
+
+## Coupled simulation
+
+## Nudged atmosphere simulations for analyzing aerosol effects
