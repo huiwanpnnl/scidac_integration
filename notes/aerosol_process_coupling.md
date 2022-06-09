@@ -19,7 +19,7 @@ As a quick, easy, and effective (although not perfect) solution to this numerica
 Results from EAMv1 show that this revision 
 
 * substantially increases the simulated global mean dust lifetime when using 72 vertical levels,
-* substantially reduces the sensitivity of the dust lifetime to vertical resolution.
+* substantially reduces the sensitivity of the dust lifetime to vertical resolution,
 
 both of which are desirable changes.
 
