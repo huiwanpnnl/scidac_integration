@@ -14,7 +14,7 @@ and consequently
 
 The problem is particularly severe when the bottom layer in EAM is thin.
 
-As a quick, easy, and effective (although not perfect) solution to this numerical issue, we propose a revised coupling scheme in which the mixing ratio update corresponding to surface emission is moved to the location before the cloud macro-microphysics subcycles in `tphysbc`. For aerosols, this means surface emissions are applied after dynamics and before turbulent mixing, which implies parallel splitting between the emissions and dry removal.
+As a quick, easy, and effective (although not perfect) solution to this numerical issue, we propose a revised coupling scheme in which the mixing ratio update corresponding to surface emission is moved to the location before the cloud macro-microphysics subcycles in `tphysbc`. For aerosols, this means surface emissions are applied after dynamics and before turbulent mixing, which can be interpreted as using parallel splitting between the emissions and dry removal.
 
 Results from EAMv1 show that this revision 
 
