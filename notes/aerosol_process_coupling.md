@@ -2,7 +2,7 @@
 
 ## Motivation
 
-In EAMv1 and v2, the surface emission of aerosols and gas species is applied (i.e., the tracer mixing ratios in the state variable are updated) inside the subroutine `clubb_surface` in `tphysac`, which is called before dry removal, while resolved transport and turbulent mixing are calculated afterwards. This sequence of calculation, used in combination with sequential operator splitting, is problematic for aerosol species with strong surface emission sources, as this numerical scheme leads to 
+In EAMv1 and v2, the surface emission of aerosols and gas species is applied (i.e., the tracer mixing ratios in the state variable are updated) after the subroutine `clubb_surface` in `tphysac`. This is done before dry removal. The resolved transport and turbulent mixing are calculated after dry removal. This sequence of calculation, used in combination with sequential operator splitting, is problematic for aerosol species with strong surface emission sources as this numerical scheme leads to 
 
 * overestimated dry removal
 * underestimated turbulent transport
@@ -10,16 +10,16 @@ In EAMv1 and v2, the surface emission of aerosols and gas species is applied (i.
 and consequently
 
 * underestimated long-range transport
-* overly shortly aerosol lifetime
+* overly short aerosol lifetime
 
 The problem is particularly severe when the bottom layer in EAM is thin.
 
-As a quick, easy, and effective (although not perfect) solution to this numerical issue, we propose a revised coupling scheme in which the mixing ratio update corresponding to surface emission is moved to the location before the cloud macro-microphysics subcycles in `tphysbc`. For aerosols, this means surface emissions are applied after dynamics and before turbulent mixing, which implies parallel splitting between the emissions and dry removal.
+As a quick, easy, and effective (although not perfect) solution to this numerical issue, we propose a revised coupling scheme in which the mixing ratio update corresponding to surface emission is moved to the location before the cloud macro-microphysics subcycles in `tphysbc`. For aerosols, this means surface emissions are applied after dynamics and before turbulent mixing, which can be interpreted as using parallel splitting between the emissions and dry removal.
 
 Results from EAMv1 show that this revision 
 
 * substantially increases the simulated global mean dust lifetime when using 72 vertical levels,
-* substantially reduces the resolution sensitivity of the dust lifetime,
+* substantially reduces the sensitivity of the dust lifetime to vertical resolution,
 
 both of which are desirable changes.
 
@@ -71,8 +71,8 @@ Short 2x5-day simulation with a restart after day 5
 
 * Compset: `F2010`
 * Resolution: `ne30pg2_EC30to60E2r2`
-* `CASE_GROUP`: `v2.LR.SciDAC4-PNNL`
-* Hybrid run with an AMIP reference case:
+* `CASE_GROUP = v2.LR.SciDAC4-PNNL`
+* Hybrid run with an AMIP reference case provided by Wuyin Lin:
 
 ```
 readonly MODEL_START_TYPE="hybrid"  
@@ -83,10 +83,19 @@ readonly RUN_REFDIR="/compyfs/linw288/E3SMv2/v2.LR.amip_0101/rest/2010-01-01-000
 readonly RUN_REFCASE="v2.LR.amip_0101"
 readonly RUN_REFDATE="2010-01-01"
 ```
+ * Turning on the revised coupling: `cflx_cpl_opt = 2` in `user_nl_eam`
  * PE layout: 640 tasks (640/40 = 16 nodes)
 
 ### Paths
 
-* Case name: `baseline_4b21b5_F2010`
-* Run script: [`run_baseline_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/baseline/run_baseline_F2010_climate.sh)
-* Run dir: `/compyfs/wanh895/scidac4_int/master/baseline_4b21b5_F2010/run/`
+
+* Case name: `aerosol_F2010`
+* Run script: [`run_cflx_cpl_opt_2_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/aerosol_process_coupling/run_cflx_cpl_opt_2_F2010_climate.sh)
+* Run dir: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/run/`
+* Climo files: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/climo/`
+* E3SM_Diags output: [comparison with baseline](https://compy-dtn.pnl.gov/wanh895/E3SM/v2.LR.SciDAC4-PNNL/aerosol_vs_baseline_4b21b5_F2010/e3sm_diags/180x360_aave/aerosol_vs_baseline_4b21b5_F2010_2010-2014/viewer/)
+
+
+## Coupled simulation
+
+## Nudged atmosphere simulations for analyzing aerosol effects
