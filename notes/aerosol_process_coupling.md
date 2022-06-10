@@ -26,7 +26,7 @@ both of which are desirable changes.
 
 ## Code
 
-Branch `huiwanpnnl/atm/aerosol_process_coupling`
+Branch [`huiwanpnnl/atm/aerosol_process_coupling`](https://github.com/E3SM-Project/E3SM/tree/huiwanpnnl/atm/aerosol_process_coupling)
 
 Modifications to v2:
 
@@ -44,7 +44,7 @@ Modifications to v2:
 
 ## BFB testing
 
-Short 2x5-day simulation with a restart after day 5
+Short 2x5-day simulation with a restart after day 5:
 
 * Run script: [`run_3_cflx_cpl_opt_1.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/aerosol_process_coupling/run_3_cflx_cpl_opt_1.sh)
 
@@ -54,20 +54,17 @@ Short 2x5-day simulation with a restart after day 5
 `phys_ctl_readnl: cflx_cpl_opt =            1`
 
 * The following line in `atm.log` indicates that the results are BFB identical to those from the master:
-
 `nstep, te      481   0.26201811523625607E+10   0.26201826682369900E+10   0.83831016650550192E-04   0.98521053591103759E+05`
 
 * For reference, the corresponding line from the baseline (hash `4b21b5` from May 19, 2022) is 
-
 `nstep, te      481   0.26201811523625607E+10   0.26201826682369900E+10   0.83831016650550192E-04   0.98521053591103759E+05`
 
-* For comparison, if `cflx_cpl_opt = 2`, this line becomes 
-  
-` nstep, te      481   0.26203722892147989E+10   0.26203737999446177E+10   0.83546702557270257E-04   0.98520825327654529E+05`
+* If `cflx_cpl_opt = 2`, the line becomes 
+  ` nstep, te      481   0.26203722892147989E+10   0.26203737999446177E+10   0.83546702557270257E-04   0.98520825327654529E+05`
 
 ## Five-year atmosphere simulation
 
-### Case setup
+### Case setup shared with the reference simulation
 
 * Compset: `F2010`
 * Resolution: `ne30pg2_EC30to60E2r2`
@@ -83,13 +80,12 @@ readonly RUN_REFDIR="/compyfs/linw288/E3SMv2/v2.LR.amip_0101/rest/2010-01-01-000
 readonly RUN_REFCASE="v2.LR.amip_0101"
 readonly RUN_REFDATE="2010-01-01"
 ```
- * Turning on the revised coupling: `cflx_cpl_opt = 2` in `user_nl_eam`
  * PE layout: 640 tasks (640/40 = 16 nodes)
 
-### Paths
+### Sensitivity experiment
 
-
-* Case name: `aerosol_F2010`
+* Case name: `aerosol_F2010` 
+* Revised coupling turned on using `cflx_cpl_opt = 2` in `user_nl_eam`
 * Run script: [`run_cflx_cpl_opt_2_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/aerosol_process_coupling/run_cflx_cpl_opt_2_F2010_climate.sh)
 * Run dir: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/run/`
 * Climo files: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/climo/`
