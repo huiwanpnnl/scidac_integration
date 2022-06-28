@@ -10,7 +10,7 @@ In EAMv1 and v2, the surface emission of aerosols and gas species is applied (i.
 and consequently
 
 * underestimated long-range transport
-* overly short aerosol lifetime
+* overly short dust aerosol lifetime
 
 The problem is particularly severe when the bottom layer in EAM is thin.
 
