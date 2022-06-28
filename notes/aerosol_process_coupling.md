@@ -93,9 +93,9 @@ readonly RUN_REFDATE="2010-01-01"
 
 ### Key results
 
-All numbers and plots shown below are **annual averages**.
+All numbers and plots shown below are _5-year averages_.
 
-#### Global averages
+#### Global mean
 
 |                | Dust burden | Dust emission  | Dust lifetime |
 |----------------|-------------|----------------|---------------|
@@ -106,6 +106,14 @@ All numbers and plots shown below are **annual averages**.
 | Baseline       | 5.4 Tg          | 2533.2 Tg/year | 0.8 day |
 | Revised        | 8.5 Tg          | 2517.8 Tg/year | 1.2 day |
 | Relative diff. | +57%            | -3%            | +58%    |
+
+#### Zonal mean aerosol mass mixing ratios
+
+![Zonal mean mixing ratios](figures/aerosol_zonal_mean_mixing_ratio.png)
+
+#### AOD
+
+![AOD](figures/aerosol_aod.png)
 
 
 ## Coupled simulation
