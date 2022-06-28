@@ -113,7 +113,7 @@ All numbers and plots shown below are _5-year averages_.
 
 #### AOD
 
-![AOD](figures/aerosol_aod.png)
+![AOD](figures/aerosol_AOD.png)
 
 
 ## Coupled simulation
