@@ -91,6 +91,16 @@ readonly RUN_REFDATE="2010-01-01"
 * Climo files: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/climo/`
 * E3SM_Diags output: [comparison with baseline](https://compy-dtn.pnl.gov/wanh895/E3SM/v2.LR.SciDAC4-PNNL/aerosol_vs_baseline_4b21b5_F2010/e3sm_diags/180x360_aave/aerosol_vs_baseline_4b21b5_F2010_2010-2014/viewer/)
 
+### Model output
+
+* Sensitivity experiment
+  * climo files: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/climo/`
+  * run dir: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/run/`
+* Baseline
+  * climo files: `/compyfs/wanh895/scidac4_int/master/baseline_4b21b5_F2010/climo/`
+  * run dir: `/compyfs/wanh895/scidac4_int/master/baseline_4b21b5_F2010/run`
+
+
 ### Key results
 
 All numbers and plots shown below are _5-year averages_.
