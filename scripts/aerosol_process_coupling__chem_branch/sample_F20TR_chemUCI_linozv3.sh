@@ -9,58 +9,53 @@
 
 main() {
 
-# For debugging, uncomment line below
-set -x
+# For debugging, uncomment libe below
+#set -x
 
 # --- Configuration flags ----
 
 # Machine and project
-readonly MACHINE=compy
-readonly PROJECT="esmd"
+readonly MACHINE=chrysalis
+readonly PROJECT="e3sm"
 
 # Simulation
 readonly COMPSET="F20TR_chemUCI-Linozv3"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
-# BEFORE RUNNING : CHANGE the following CASE_NAME to desired value
-readonly CASE_NAME="chem_short_"${COMPSET}
+readonly CASE_NAME="20220518.v2.LR.bi-grid.amip.chemUCI_Linozv3"
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 # readonly CASE_GROUP=""
 
 # Code and compilation
-
-
-#HWan note: the next few variables are only needed if we let this script also clone/fetch code
-#readonly BRANCH="master"
-#readonly CHERRY=( )
-#HWan note ===========
-
-
+readonly CHECKOUT="20220420"
+readonly BRANCH="tangq/atm/chemUCI_amip" # f95eedf193992f4898cc791e3b70e9d2dfa02568, tangq/atm/chemUCI_amip as of 20220518
+# change to use CH4LNZ in the mechanism file for both chemUCI and Linoz,
+# so the surface boundary condition is consistent for methane.
+readonly CHERRY=( )
 readonly DEBUG_COMPILE=false
 
 # Run options
-readonly MODEL_START_TYPE="initial"  # 'initial', 'continue', 'branch', 'hybrid'
-readonly START_DATE="0001-01-01"
+readonly MODEL_START_TYPE="hybrid"  # 'initial', 'continue', 'branch', 'hybrid'
+readonly START_DATE="1870-01-01"
 
 # Additional options for 'branch' and 'hybrid'
-#readonly GET_REFCASE=TRUE
-#readonly RUN_REFDIR="/global/cscratch1/sd/forsyth/E3SMv2/v2.LR.piControl/init"
-#readonly RUN_REFCASE="20210625.v2rc3c-GWD.piControl.ne30pg2_EC30to60E2r2.chrysalis"
-#readonly RUN_REFDATE="1001-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly GET_REFCASE=TRUE
+readonly RUN_REFDIR="/lcrc/group/e3sm/ac.qtang/E3SM_simulations/${CASE_NAME}/init"
+readonly RUN_REFCASE="20220511.v2.LR.bi-grid.amip.chemUCI_Linozv3"
+readonly RUN_REFDATE="1880-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
-readonly CHECKOUT="chem"
-readonly CODE_ROOT="${HOME}/codes/scidac4_int/${CHECKOUT}"
-readonly CASE_ROOT="/compyfs/${USER}/scidac4_int/${CHECKOUT}/${CASE_NAME}"
+readonly CODE_ROOT="${HOME}/E3SMv2/code/chem/${CHECKOUT}"
+readonly CASE_ROOT="/lcrc/group/e3sm/${USER}/E3SM_simulations/${CASE_NAME}"
 
 # Sub-directories
 readonly CASE_BUILD_DIR=${CASE_ROOT}/build
 readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 
 # Define type of run
-#  short tests: 'XS_2x5_ndays', 'XS_1x10_ndays', 'S_1x10_ndays',
-#               'M_1x10_ndays', 'M2_1x10_ndays', 'M80_1x10_ndays', 'L_1x10_ndays'
+#  short tests: 'S_2x5_ndays', 'M_1x10_ndays', 'M80_1x10_ndays'
 #  or 'production' for full simulation
-readonly run='XS_2x5_ndays'
+readonly run='production'
+#readonly run='S_2x5_ndays'
 if [ "${run}" != "production" ]; then
 
   # Short test simulations
@@ -72,7 +67,8 @@ if [ "${run}" != "production" ]; then
 
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/tests/${run}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/tests/${run}/run
-  readonly PELAYOUT=${layout}
+  #readonly PELAYOUT=${layout}
+  readonly PELAYOUT="custom-10"
   readonly WALLTIME="2:00:00"
   readonly STOP_OPTION=${units}
   readonly STOP_N=${length}
@@ -86,17 +82,18 @@ else
   # Production simulation
   readonly CASE_SCRIPTS_DIR=${CASE_ROOT}/case_scripts
   readonly CASE_RUN_DIR=${CASE_ROOT}/run
-  readonly PELAYOUT="L"
-  readonly WALLTIME="34:00:00"
+  #readonly PELAYOUT="M"
+  readonly PELAYOUT="custom-30"
+  readonly WALLTIME="30:00:00"
   readonly STOP_OPTION="nyears"
-  readonly STOP_N="50"
+  readonly STOP_N="30"
   readonly REST_OPTION="nyears"
-  readonly REST_N="5"
-  readonly RESUBMIT="9"
+  readonly REST_N="1"
+  readonly RESUBMIT="3"
   readonly DO_SHORT_TERM_ARCHIVING=false
 fi
 
-# Coupler history
+# Coupler history 
 readonly HIST_OPTION="nyears"
 readonly HIST_N="5"
 
@@ -107,7 +104,7 @@ readonly OLD_EXECUTABLE=""
 do_fetch_code=false
 do_create_newcase=true
 do_case_setup=true
-do_case_build=true
+do_case_build=false
 do_case_submit=true
 
 # --- Now, do the work ---
@@ -270,7 +267,7 @@ fetch_code() {
 
     # This will put repository, with all code
     git clone git@github.com:E3SM-Project/${repo}.git .
-
+    
     # Setup git hooks
     rm -rf .git/hooks
     git clone git@github.com:E3SM-Project/E3SM-Hooks.git .git/hooks
@@ -518,7 +515,7 @@ case_submit() {
 
     echo $'\n----- Starting case_submit -----\n'
     pushd ${CASE_SCRIPTS_DIR}
-
+    
     # Run CIME case.submit
     ./case.submit
 
@@ -550,3 +547,4 @@ popd() {
 # Now, actually run the script
 #-----------------------------------------------------
 main
+
