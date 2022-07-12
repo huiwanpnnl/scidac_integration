@@ -10,7 +10,7 @@ In EAMv1 and v2, the surface emission of aerosols and gas species is applied (i.
 and consequently
 
 * underestimated long-range transport
-* overly short aerosol lifetime
+* overly short dust aerosol lifetime
 
 The problem is particularly severe when the bottom layer in EAM is thin.
 
@@ -89,13 +89,17 @@ readonly RUN_REFDATE="2010-01-01"
 * Run script: [`run_cflx_cpl_opt_2_F2010_climate.sh`](https://github.com/huiwanpnnl/scidac_integration/blob/main/scripts/aerosol_process_coupling/run_cflx_cpl_opt_2_F2010_climate.sh)
 * Run dir: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/run/`
 * Climo files: `/compyfs/wanh895/scidac4_int/aerosol/aerosol_F2010/climo/`
+* Baseline (default coupling)
+  * climo files: `/compyfs/wanh895/scidac4_int/master/baseline_4b21b5_F2010/climo/`
+  * run dir: `/compyfs/wanh895/scidac4_int/master/baseline_4b21b5_F2010/run/`
 * E3SM_Diags output: [comparison with baseline](https://compy-dtn.pnl.gov/wanh895/E3SM/v2.LR.SciDAC4-PNNL/aerosol_vs_baseline_4b21b5_F2010/e3sm_diags/180x360_aave/aerosol_vs_baseline_4b21b5_F2010_2010-2014/viewer/)
+
 
 ### Key results
 
-All numbers and plots shown below are **annual averages**.
+All numbers and plots shown below are _5-year averages_.
 
-#### Global averages
+#### Global mean
 
 |                | Dust burden | Dust emission  | Dust lifetime |
 |----------------|-------------|----------------|---------------|
@@ -106,6 +110,14 @@ All numbers and plots shown below are **annual averages**.
 | Baseline       | 5.4 Tg          | 2533.2 Tg/year | 0.8 day |
 | Revised        | 8.5 Tg          | 2517.8 Tg/year | 1.2 day |
 | Relative diff. | +57%            | -3%            | +58%    |
+
+#### Zonal mean aerosol mass mixing ratios
+
+![Zonal mean mixing ratios](figures/aerosol_zonal_mean_mixing_ratio.png)
+
+#### AOD
+
+![AOD](figures/aerosol_AOD.png)
 
 
 ## Coupled simulation
