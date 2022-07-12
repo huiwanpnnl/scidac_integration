@@ -1,8 +1,7 @@
 #!/bin/bash -fe
 
-#
 #------------------------------------------------
-# This script is based on the one at
+# This script was based on the one at
 #  https://github.com/E3SM-Project/SimulationScripts/blob/master/archive/v2/run.v2.LR.amip_0101.sh and 
 # and was modified by Hui Wan, PNNL, July 2022.
 #------------------------------------------------
@@ -28,7 +27,7 @@ readonly PROJECT="esmd"
 # Simulation
 readonly COMPSET="F20TR"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
-readonly CASE_NAME="chem_short_"${COMPSET}
+readonly CASE_NAME="chem_cflx_short_"${COMPSET}
 # If this is part of a simulation campaign, ask your group lead about using a case_group label
 readonly CASE_GROUP="v2.LR.SciDAC4-PNNL"
 
@@ -52,7 +51,7 @@ readonly START_DATE="2010-01-01"
 #readonly RUN_REFDATE="1001-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
-readonly CHECKOUT="chem"
+readonly CHECKOUT="chem_cflx"
 readonly CODE_ROOT="${HOME}/codes/scidac4_int/${CHECKOUT}"
 readonly CASE_ROOT="/compyfs/${USER}/scidac4_int/${CHECKOUT}/${CASE_NAME}"
 
