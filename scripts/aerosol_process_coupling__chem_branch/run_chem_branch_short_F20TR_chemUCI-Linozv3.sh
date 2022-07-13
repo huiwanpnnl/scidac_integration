@@ -39,7 +39,7 @@ readonly DEBUG_COMPILE=false
 
 # Run options
 readonly MODEL_START_TYPE="initial"  # 'initial', 'continue', 'branch', 'hybrid'
-readonly START_DATE="0001-01-01"
+readonly START_DATE="2010-01-01"
 
 # Additional options for 'branch' and 'hybrid'
 #readonly GET_REFCASE=TRUE
@@ -105,9 +105,9 @@ readonly OLD_EXECUTABLE=""
 
 # --- Toggle flags for what to do ----
 do_fetch_code=false
-do_create_newcase=true
+do_create_newcase=false
 do_case_setup=true
-do_case_build=true
+do_case_build=false
 do_case_submit=true
 
 # --- Now, do the work ---
@@ -186,7 +186,7 @@ mfilt  = 1,1,240,30
          'M:mam4_mode3:${input_data_dir}/atm/cam/physprops/mam4_mode3_rrtmg_aeronetdust_c141106.nc',
          'M:mam4_mode4:${input_data_dir}/atm/cam/physprops/mam4_mode4_rrtmg_c130628.nc'
 
- sad_file		= '/lcrc/group/e3sm/data/inputdata/atm/waccm/sulf/SAD_SULF_1849-2100_1.9x2.5_c090817.nc'
+ sad_file = '${input_data_dir}/atm/waccm/sulf/SAD_SULF_1849-2100_1.9x2.5_c090817.nc'
  
 EOF
 
