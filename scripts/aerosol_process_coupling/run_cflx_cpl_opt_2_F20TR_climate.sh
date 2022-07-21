@@ -37,7 +37,8 @@ readonly CHERRY=( )
 readonly DEBUG_COMPILE=false
 
 # Run options
-readonly MODEL_START_TYPE="initial"  # 'initial', 'continue', 'branch', 'hybrid'
+#readonly MODEL_START_TYPE="initial"  # 'initial', 'continue', 'branch', 'hybrid'
+readonly MODEL_START_TYPE="continue"  # 'initial', 'continue', 'branch', 'hybrid'
 readonly START_DATE="1985-01-01"
 
 # Additional options for 'branch' and 'hybrid'
@@ -104,9 +105,9 @@ readonly OLD_EXECUTABLE=""
 
 # --- Toggle flags for what to do ----
 do_fetch_code=false
-do_create_newcase=true
+do_create_newcase=false
 do_case_setup=true
-do_case_build=true
+do_case_build=false
 do_case_submit=true
 
 # --- Now, do the work ---
@@ -497,6 +498,7 @@ case_submit() {
     pushd ${CASE_SCRIPTS_DIR}
 
     ./xmlchange JOB_QUEUE=short --force
+   #./xmlchange JOB_QUEUE=slurm --force
     
     # Run CIME case.submit
     ./case.submit
