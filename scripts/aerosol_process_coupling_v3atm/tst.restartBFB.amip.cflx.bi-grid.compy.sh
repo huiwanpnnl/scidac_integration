@@ -21,9 +21,8 @@ readonly PROJECT="esmd"
 # Simulation
 readonly COMPSET="F20TR_chemUCI-Linozv3"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
-readonly CASE_NAME="tst.restartBFB.amip.cflx"
-# If this is part of a simulation campaign, ask your group lead about using a case_group label
-# readonly CASE_GROUP=""
+readonly CASE_NAME="tst.restartBFB.amip.cflx_1"
+readonly CASE_GROUP=v2.LR.SciDAC4-PNNL"
 
 # Code and compilation
 readonly repo="v3atm"           # This is the repository name from which E3SM code will be cloned
@@ -37,11 +36,11 @@ readonly DEBUG_COMPILE=false
 readonly MODEL_START_TYPE="initial"  # 'initial', 'continue', 'branch', 'hybrid'
 readonly START_DATE="2000-01-01"
 
-## Additional options for 'branch' and 'hybrid'
-#readonly GET_REFCASE=TRUE
-#readonly RUN_REFDIR="/lcrc/group/e3sm/ac.qtang/E3SM_simulations/${CASE_NAME}/init"
-#readonly RUN_REFCASE="20220504.v2.LR.bi-grid.amip.chemMZT.chrysalis"
-#readonly RUN_REFDATE="1985-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+# Additional options for 'branch' and 'hybrid'
+readonly GET_REFCASE=TRUE
+readonly RUN_REFDIR="/compyfs/wumi635/archive/20220518.v2.LR.bi-grid.amip.chemUCI_Linozv3/archive/rest/init_1880-01-01-00000"
+readonly RUN_REFCASE="20220511.v2.LR.bi-grid.amip.chemUCI_Linozv3"
+readonly RUN_REFDATE="1880-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/codes/scidac4_int/${CHECKOUT}"
