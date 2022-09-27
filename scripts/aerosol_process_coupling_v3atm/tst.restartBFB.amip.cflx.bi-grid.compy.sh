@@ -22,7 +22,7 @@ readonly PROJECT="esmd"
 readonly COMPSET="F20TR_chemUCI-Linozv3"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
 readonly CASE_NAME="tst.restartBFB.amip.cflx_1"
-readonly CASE_GROUP=v2.LR.SciDAC4-PNNL"
+readonly CASE_GROUP="v2.LR.SciDAC4-PNNL"
 
 # Code and compilation
 readonly repo="v3atm"           # This is the repository name from which E3SM code will be cloned
