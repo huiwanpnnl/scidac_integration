@@ -21,7 +21,8 @@ readonly PROJECT="esmd"
 # Simulation
 readonly COMPSET="F20TR_chemUCI-Linozv3"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
-readonly CASE_NAME="tst.restartBFB.amip.cflx_new.ref"
+#readonly CASE_NAME="tst.restartBFB.amip.cflx_new.ref"
+readonly CASE_NAME="tst.restartBFB.amip.cflx_new.split"
 readonly CASE_GROUP="v2.LR.SciDAC4-PNNL"
 
 # Code and compilation
@@ -54,7 +55,9 @@ readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 #  short tests: 'S_2x5_ndays', 'M_1x10_ndays', 'M80_1x10_ndays'
 #  or 'production' for full simulation
 #readonly run='production'
-readonly run='custom-10_1x10_ndays'
+#readonly run='custom-10_1x10_ndays'
+#readonly run='custom-10_2x5_ndays'
+readonly run='custom-30_1x10_ndays'
 if [ "${run}" != "production" ]; then
 
   # Short test simulations
@@ -103,7 +106,8 @@ readonly OLD_EXECUTABLE=""
 do_fetch_code=false
 do_create_newcase=true
 do_case_setup=true
-do_case_build=true
+#do_case_build=true
+do_case_build=false
 do_case_submit=true
 
 # --- Now, do the work ---
