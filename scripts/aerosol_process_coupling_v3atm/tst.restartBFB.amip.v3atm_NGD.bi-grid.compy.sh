@@ -21,14 +21,13 @@ readonly PROJECT="esmd"
 # Simulation
 readonly COMPSET="F20TR_chemUCI-Linozv3"
 readonly RESOLUTION="ne30pg2_EC30to60E2r2"
-#readonly CASE_NAME="tst.restartBFB.amip.cflx_new.ref"
-readonly CASE_NAME="tst.restartBFB.amip.cflx_new.split"
+readonly CASE_NAME="tst.restartBFB.amip.NGD_v3atm"
 readonly CASE_GROUP="v2.LR.SciDAC4-PNNL"
 
 # Code and compilation
-readonly repo="v3atm"           # This is the repository name from which E3SM code will be cloned
-readonly BRANCH="huiwapnpnnl/atm/v3atm_cflx_new_imp" # This is the branch in ${repo} to be cloned.
-readonly CHECKOUT="v3atm_clfx_new_imp"  # This is the local subdir into which the E3SM code will be cloned
+readonly repo="v3atm"                # This is the repository name from which E3SM code will be cloned
+readonly BRANCH="NGD_v3atm"          # This is the branch in ${repo} to be cloned.
+readonly CHECKOUT="v3atm_NGD_v3atm"  # This is the local subdir into which the E3SM code will be cloned
  
 readonly CHERRY=( )
 readonly DEBUG_COMPILE=false
@@ -38,10 +37,10 @@ readonly MODEL_START_TYPE="initial"  # 'initial', 'continue', 'branch', 'hybrid'
 readonly START_DATE="2000-01-01"
 
 # Additional options for 'branch' and 'hybrid'
-#readonly GET_REFCASE=TRUE
-#readonly RUN_REFDIR="/compyfs/wumi635/archive/20220518.v2.LR.bi-grid.amip.chemUCI_Linozv3/archive/rest/init_1880-01-01-00000"
-#readonly RUN_REFCASE="20220511.v2.LR.bi-grid.amip.chemUCI_Linozv3"
-#readonly RUN_REFDATE="1880-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
+readonly GET_REFCASE=TRUE
+readonly RUN_REFDIR="/compyfs/wumi635/archive/20220518.v2.LR.bi-grid.amip.chemUCI_Linozv3/archive/rest/init_1880-01-01-00000"
+readonly RUN_REFCASE="20220511.v2.LR.bi-grid.amip.chemUCI_Linozv3"
+readonly RUN_REFDATE="1880-01-01"   # same as MODEL_START_DATE for 'branch', can be different for 'hybrid'
 
 # Set paths
 readonly CODE_ROOT="${HOME}/codes/scidac4_int/${CHECKOUT}"
@@ -55,9 +54,7 @@ readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 #  short tests: 'S_2x5_ndays', 'M_1x10_ndays', 'M80_1x10_ndays'
 #  or 'production' for full simulation
 #readonly run='production'
-#readonly run='custom-10_1x10_ndays'
-#readonly run='custom-10_2x5_ndays'
-readonly run='custom-30_1x10_ndays'
+readonly run='custom-10_1x10_ndays'
 if [ "${run}" != "production" ]; then
 
   # Short test simulations
@@ -71,7 +68,7 @@ if [ "${run}" != "production" ]; then
   readonly CASE_RUN_DIR=${CASE_ROOT}/tests/${run}/run
   readonly PELAYOUT=${layout}
   #readonly PELAYOUT="custom-10"
-  readonly WALLTIME="1:30:00"
+  readonly WALLTIME="4:00:00"
   readonly STOP_OPTION=${units}
   readonly STOP_N=${length}
   readonly REST_OPTION=${STOP_OPTION}
@@ -106,8 +103,7 @@ readonly OLD_EXECUTABLE=""
 do_fetch_code=false
 do_create_newcase=true
 do_case_setup=true
-#do_case_build=true
-do_case_build=false
+do_case_build=true
 do_case_submit=true
 
 # --- Now, do the work ---
@@ -517,8 +513,6 @@ case_submit() {
 
     echo $'\n----- Starting case_submit -----\n'
     pushd ${CASE_SCRIPTS_DIR}
-
-    ./xmlchange JOB_QUEUE=short --force
     
     # Run CIME case.submit
     ./case.submit
