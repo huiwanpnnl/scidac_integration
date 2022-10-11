@@ -21,12 +21,13 @@
 #----------------------------------------------------------------------
 ## After implementing cflx_cpl_opt = 1, 2 ; default (cflx_cpl_opt = 1)
 #------
-#test_dir="/compyfs/wanh895/scidac4_int/v3atm_clfx_new_imp/tst.restartBFB.amip.cflx_new.opt1/tests"
+test_dir="/compyfs/wanh895/scidac4_int/v3atm_clfx_new_imp/tst.restartBFB.amip.cflx_new.opt1/tests"
 #------
 ## Results were
-##6b2f078c266766ab335a216917c1ed60  atm_custom-10_1x10_ndays.txt
-##6b2f078c266766ab335a216917c1ed60  atm_custom-10_2x5_ndays.txt
-##6b2f078c266766ab335a216917c1ed60  atm_custom-30_1x10_ndays.txt
+## 6b2f078c266766ab335a216917c1ed60  atm_custom-10_1x10_ndays.txt
+## 6b2f078c266766ab335a216917c1ed60  atm_custom-10_2x5_ndays.txt
+## 6b2f078c266766ab335a216917c1ed60  atm_custom-30_1x10_ndays.txt
+## 6b2f078c266766ab335a216917c1ed60  atm_custom-30_2x5_ndays.txt
 #--------------------------------------------------------------------
 
 #----------------------------------------------------------------------
@@ -40,12 +41,13 @@
 ## 40afa98083417c4c009a50c912de020b  atm_custom-30_1x10_ndays.txt
 
 #------
-test_dir="/compyfs/wanh895/scidac4_int/v3atm_clfx_new_imp/tst.restartBFB.amip.cflx_new.opt2/tests"
+#test_dir="/compyfs/wanh895/scidac4_int/v3atm_clfx_new_imp/tst.restartBFB.amip.cflx_new.opt2/tests"
 #------
 ## Results were
 ## 40afa98083417c4c009a50c912de020b  atm_custom-10_1x10_ndays.txt
 ## 40afa98083417c4c009a50c912de020b  atm_custom-10_2x5_ndays.txt
 ## 40afa98083417c4c009a50c912de020b  atm_custom-30_1x10_ndays.txt
+## 40afa98083417c4c009a50c912de020b  atm_custom-30_2x5_ndays.txt
 
 cd $test_dir
 for test in custom*_*_ndays

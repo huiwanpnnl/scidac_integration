@@ -58,7 +58,8 @@ readonly CASE_ARCHIVE_DIR=${CASE_ROOT}/archive
 #readonly run='production'
 #readonly run='custom-10_1x10_ndays'
 #readonly run='custom-10_2x5_ndays'
-readonly run='custom-30_1x10_ndays'
+#readonly run='custom-30_1x10_ndays'
+readonly run='custom-30_2x5_ndays'
 if [ "${run}" != "production" ]; then
 
   # Short test simulations
